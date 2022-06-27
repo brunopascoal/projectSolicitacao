@@ -1,13 +1,9 @@
 <?php
-define('HOST', 'localhost');
-define('USUARIO', 'root');
-define('SENHA', '');
-define('DB', 'solicitacao');
- 
-$conexao = mysqli_connect(HOST, USUARIO, SENHA, DB) or die ('Não foi possível conectar');
+  include("conexao.php"); 
+
 echo "Sucesso!";
   //Variáveis
-
+  $nome = null;
   $trabalho1 = null;
   $trabalho2 = null;
   $trabalho3 = null;
@@ -16,7 +12,32 @@ echo "Sucesso!";
   $trabalho6 = null;
   $trabalho7 = null;
   $trabalho8 = null;
+  $trabalho8 = null;
+  $trabalho9 = null;
+  $trabalho10 = null;
+  $trabalho11 = null;
+  $trabalho12 = null;
+  $trabalho13 = null;
+  $trabalho14 = null;
+  $trabalho15 = null;
+  $trabalho16 = null;
+  $trabalho17 = null;
+  $trabalho18 = null;
+  $trabalho19 = null;
+  $trabalho21 = null;
+  $trabalho22 = null;
+  $trabalho23 = null;
+  $trabalho24 = null;
+  $trabalho25 = null;
+  $trabalho26 = null;
+  $trabalho27 = null;
+  $trabalho28 = null;
+  $trabalho29 = null;
  
+
+   // trabalho 1
+   if (isset($_POST['nome']))
+   $nome = $_POST['nome'];
 
 
   // trabalho 1
@@ -103,16 +124,297 @@ echo "Sucesso!";
     $valores8 = implode(", ", $trabalho8);
   }
 
+    // trabalho9
+
+    if (isset($_POST['trabalho9']))
+    $trabalho9 = $_POST['trabalho9'];
+
+  if($trabalho9 !== null){
+    $valores9 = implode(", ", $trabalho9);
+  
+    echo "<p>{$valores9}</p>";
+  
+  }
+
+    // trabalho10
+
+    if (isset($_POST['trabalho10']))
+    $trabalho10 = $_POST['trabalho10'];
+
+  if($trabalho10 !== null){
+    $valores10 = implode(", ", $trabalho10);
+  
+    echo "<p>{$valores10}</p>";
+  
+  }
+
+    // trabalho11
+
+    if (isset($_POST['trabalho11']))
+    $trabalho11 = $_POST['trabalho11'];
+
+  if($trabalho11 !== null){
+    $valores11 = implode(", ", $trabalho11);
+  
+    echo "<p>{$valores11}</p>";
+  
+  }
+
+    // trabalho12
+
+    if (isset($_POST['trabalho12']))
+    $trabalho12 = $_POST['trabalho12'];
+
+  if($trabalho12 !== null){
+    $valores12 = implode(", ", $trabalho12);
+  
+    echo "<p>{$valores12}</p>";
+  
+  }
+
+    // trabalho13
+
+    if (isset($_POST['trabalho13']))
+    $trabalho13 = $_POST['trabalho13'];
+
+  if($trabalho13 !== null){
+    $valores13 = implode(", ", $trabalho13);
+  
+    echo "<p>{$valores13}</p>";
+  
+  }
+
+    // trabalho14
+
+    if (isset($_POST['trabalho14']))
+    $trabalho14 = $_POST['trabalho14'];
+
+  if($trabalho14 !== null){
+    $valores14 = implode(", ", $trabalho14);
+  
+    echo "<p>{$valores14}</p>";
+  
+  }
+
+    // trabalho15
+
+    if (isset($_POST['trabalho15']))
+    $trabalho15 = $_POST['trabalho15'];
+
+  if($trabalho15 !== null){
+    $valores15 = implode(", ", $trabalho15);
+  
+    echo "<p>{$valores15}</p>";
+  
+  }
+
+    // trabalho16
+
+    if (isset($_POST['trabalho16']))
+    $trabalho16 = $_POST['trabalho16'];
+
+  if($trabalho16 !== null){
+    $valores16 = implode(", ", $trabalho16);
+  
+    echo "<p>{$valores16}</p>";
+  
+  }
+
+    // trabalho17
+
+    if (isset($_POST['trabalho17']))
+    $trabalho17 = $_POST['trabalho17'];
+
+  if($trabalho17 !== null){
+    $valores17 = implode(", ", $trabalho17);
+  
+    echo "<p>{$valores17}</p>";
+  
+  }
+
+    // trabalho18
+
+    if (isset($_POST['trabalho18']))
+    $trabalho18 = $_POST['trabalho18'];
+
+  if($trabalho18 !== null){
+    $valores18 = implode(", ", $trabalho18);
+  
+    echo "<p>{$valores18}</p>";
+  
+  }
+
+    // trabalho19
+
+    if (isset($_POST['trabalho19']))
+    $trabalho19 = $_POST['trabalho19'];
+
+  if($trabalho19 !== null){
+    $valores19 = implode(", ", $trabalho19);
+  
+    echo "<p>{$valores19}</p>";
+  
+  }
+
+    // trabalho20
+
+    if (isset($_POST['trabalho20']))
+    $trabalho20 = $_POST['trabalho20'];
+
+  if($trabalho20 !== null){
+    $valores20 = implode(", ", $trabalho20);
+  
+    echo "<p>{$valores20}</p>";
+  
+  }
+
+    // trabalho21
+
+    if (isset($_POST['trabalho21']))
+    $trabalho21 = $_POST['trabalho21'];
+
+  if($trabalho21 !== null){
+    $valores21 = implode(", ", $trabalho21);
+  
+    echo "<p>{$valores21}</p>";
+  
+  }
+
+    // trabalho22
+
+    if (isset($_POST['trabalho22']))
+    $trabalho22 = $_POST['trabalho22'];
+
+  if($trabalho22 !== null){
+    $valores22 = implode(", ", $trabalho22);
+  
+    echo "<p>{$valores22}</p>";
+  
+  }
+
+    // trabalho23
+
+    if (isset($_POST['trabalho23']))
+    $trabalho23 = $_POST['trabalho23'];
+
+  if($trabalho23 !== null){
+    $valores23 = implode(", ", $trabalho23);
+  
+    echo "<p>{$valores23}</p>";
+  
+  }
+
+    // trabalho24
+
+    if (isset($_POST['trabalho24']))
+    $trabalho24 = $_POST['trabalho24'];
+
+  if($trabalho24 !== null){
+    $valores24 = implode(", ", $trabalho24);
+  
+    echo "<p>{$valores24}</p>";
+  
+  }
+
+    // trabalho25
+
+    if (isset($_POST['trabalho25']))
+    $trabalho25 = $_POST['trabalho25'];
+
+  if($trabalho25 !== null){
+    $valores25 = implode(", ", $trabalho25);
+  
+    echo "<p>{$valores25}</p>";
+  
+  }
+
+    // trabalho26
+
+    if (isset($_POST['trabalho26']))
+    $trabalho26 = $_POST['trabalho26'];
+
+  if($trabalho26 !== null){
+    $valores26 = implode(", ", $trabalho26);
+  
+    echo "<p>{$valores26}</p>";
+  
+  }
+
+    // trabalho27
+
+    if (isset($_POST['trabalho27']))
+    $trabalho27 = $_POST['trabalho27'];
+
+  if($trabalho27 !== null){
+    $valores27 = implode(", ", $trabalho27);
+  
+    echo "<p>{$valores27}</p>";
+  
+  }
+
+    // trabalho28
+
+    if (isset($_POST['trabalho28']))
+    $trabalho28 = $_POST['trabalho28'];
+
+  if($trabalho28 !== null){
+    $valores28 = implode(", ", $trabalho28);
+  
+    echo "<p>{$valores28}</p>";
+  
+  }
+  
+    // trabalho29
+
+    if (isset($_POST['trabalho29']))
+    $trabalho29 = $_POST['trabalho29'];
+
+  if($trabalho29 !== null){
+    $valores29 = implode(", ", $trabalho29);
+  
+    echo "<p>{$valores29}</p>";
+  
+  }
+
+
   // echo gettype($valores1);
   // echo gettype($valores2);
 
 
-$sql = $conexao->prepare("INSERT INTO solicitacoes (quest1, quest2, quest3, quest4, quest5, quest6, quest7, quest8) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+$sql = $conexao->prepare("INSERT INTO Solicitacao (nome, itemUm,
+itemDois,
+itemTres,
+itemQuatro,
+itemCinco,
+itemSeis,
+itemSete,
+itemOito,
+itemNove,
+itemDez,
+itemOnze,
+itemDoze,
+itemTreze,
+itemQuatorze,
+itemQuinz,
+itemDezesseis,
+itemDezessete,
+itemDezoito,
+itemDezenove,
+itemVinte,
+itemVinteUm,
+itemVinteDois,
+itemVinteTres,
+itemVinteQuatro,
+itemVinteCinco,
+itemVinteSeis,
+itemVinteSete,
+itemVinteOito,
+itemVinteNove) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 if(!$sql){
   echo "Prepare failed: (". $conexao->errno.") ".$conexao->error."<br>";
 };
 
-$sql->bind_param('ssssssss', $valores1, $valores2, $valores3, $valores4, $valores5, $valores6, $valores7, $valores8);
+$sql->bind_param('ssssssssssssssssssssssssssssss', $nome, $valores1, $valores2, $valores3, $valores4, $valores5, $valores6, $valores7, $valores8, $valores9, $valores10, $valores11, $valores12, $valores13, $valores14, $valores15, $valores16, $valores17, $valores18, $valores19, $valores20, $valores21, $valores22, $valores23, $valores24, $valores25, $valores26, $valores27, $valores28, $valores29);
 $sql->execute();
 
 echo 'inserido com sucesso';
