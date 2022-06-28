@@ -34,7 +34,16 @@
     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
     crossorigin="anonymous"></script>
 
+
+
+  <script>
+    function text(x) {
   
+      if (x == 0) document.getElementById("group").style.display = "flex";
+      else document.getElementById("group").style.display = "none";
+    return;
+}
+  </script>
   
 </head>
 
@@ -70,7 +79,7 @@
   <div class="box">
     <form action="send_files.php" method="POST">
       <label for="exampleDataList" class="form-label">Nome do Solicitante:</label>
-      <select class="form-select" name="nome" aria-label="Default select example">
+      <select class="form-select" name="nomeSolicitante" aria-label="Default select example">
         <option selected disable>Selecione o nome do solicitante</option>
 
         <?php
@@ -86,32 +95,35 @@
       <br>
       <label for="exampleDataList" class="form-label">Nome do Cliente:</label>
       <input class="form-control" list="datalistOptions1" id="exampleDataList" placeholder="Selecione">
-      <datalist id="datalistOptions1">
-        <option value="pessoa1">
-        <option value="">
-        <option value="">
-        <option value="">
-        <option value="">
+      <datalist name="nomeCliente" id="datalistOptions1">
+        <?php
+  
+          $sql = mysqli_query($conexao, "SELECT USUARIO from table_name where id >= 1");
+          while($row = mysqli_fetch_assoc($sql)){
+            echo "<option>".$row['USUARIO']."</option>";
+          }
+        ?>
       </datalist>
       <br>
      
       <label for="form-check form-check-inline" class="form-label">Empresa do grupo:</label><br>
+
       <div class="form-check form-check-inline">
-        <input class="form-check-input" type="radio" id="show" name="example" value="show"/>
+        <input class="form-check-input" type="radio" name="example" value="sim" onclick="text(0)" checked />
         <label class="form-check-label" for="show">Sim</label>
       </div>
 
       <div class="form-check form-check-inline">
-        <input class="form-check-input" type="radio" id="hide" name="example" value="hide" checked
-           />
+        <input class="form-check-input" type="radio" name="example" value="não" onclick="text(1)" />
         <label class="form-check-label" for="hide">Não</label>
       </div>
       <br>
     
-      <div class="input-group input-group-sm mb-3" id="box">
-        <span class="input-group-text" id="inputGroup-sizing-sm">Digite aqui:</span>
-        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+      <div class="input-group input-group-sm mb-3" id="group">
+        <input type="text" placeholder="Digite aqui" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
       </div>
+
+    
     
 
       <br>
@@ -136,7 +148,7 @@
         </div>
 
         <br><br>
-        <input class="form-control form-control-sm" type="text" placeholder="Observações">
+        <input class="form-control form-control-sm" type="text" placeholder="Observações" name="obs1">
       </fieldset>
       <br>
 
@@ -160,35 +172,12 @@
         </div>
 
         <br><br>
-        <input class="form-control form-control-sm" type="text" placeholder="Observações">
+        <input class="form-control form-control-sm" type="text" placeholder="Observações" name="obs2">
       </fieldset>
       <br>
 
       <fieldset>
         <legend><small>3. Mapear ou importar balancete do ano anterior</small></legend><br>
-        <div class="form-check form-check-inline">
-          <input class="form-check-input" name="trabalho2[]" type="checkbox" id="inlineCheckbox1" value="Controle interno"  >
-          <label class="form-check-label" for="inlineCheckbox1">Controle interno</label>
-        </div>
-        <div class="form-check form-check-inline">
-          <input class="form-check-input" name="trabalho2[]" type="checkbox" id="inlineCheckbox2" value="Preliminar">
-          <label class="form-check-label" for="inlineCheckbox2">Preliminar</label>
-        </div>
-        <div class="form-check form-check-inline">
-          <input class="form-check-input" name="trabalho2[]" type="checkbox" id="inlineCheckbox3" value="Final">
-          <label class="form-check-label" for="inlineCheckbox3">Final</label>
-        </div>
-        <div class="form-check form-check-inline">
-          <input class="form-check-input" name="trabalho2[]" type="checkbox" id="inlineCheckbox4" value="Nenhum">
-          <label class="form-check-label" for="inlineCheckbox3">Nenhum</label>
-        </div>
-        <br><br>
-        <input class="form-control form-control-sm" type="text" placeholder="Observações">
-      </fieldset>
-      <br>
-
-      <fieldset>
-        <legend><small>4. Consulta no World Check</small></legend><br>
         <div class="form-check form-check-inline">
           <input class="form-check-input" name="trabalho3[]" type="checkbox" id="inlineCheckbox1" value="Controle interno"  >
           <label class="form-check-label" for="inlineCheckbox1">Controle interno</label>
@@ -203,15 +192,15 @@
         </div>
         <div class="form-check form-check-inline">
           <input class="form-check-input" name="trabalho3[]" type="checkbox" id="inlineCheckbox4" value="Nenhum">
-          <label class="form-check-label" for="inlineCheckbox3">Nenhum</label>
+          <label class="form-check-label" for="inlineCheckbox4">Nenhum</label>
         </div>
         <br><br>
-        <input class="form-control form-control-sm" type="text" placeholder="Observações">
+        <input class="form-control form-control-sm" type="text" placeholder="Observações" name="obs3">
       </fieldset>
       <br>
 
       <fieldset>
-        <legend><small>5. Balancete comparativo</small></legend><br>
+        <legend><small>4. Consulta no World Check</small></legend><br>
         <div class="form-check form-check-inline">
           <input class="form-check-input" name="trabalho4[]" type="checkbox" id="inlineCheckbox1" value="Controle interno"  >
           <label class="form-check-label" for="inlineCheckbox1">Controle interno</label>
@@ -229,12 +218,12 @@
           <label class="form-check-label" for="inlineCheckbox3">Nenhum</label>
         </div>
         <br><br>
-        <input class="form-control form-control-sm" type="text" placeholder="Observações">
+        <input class="form-control form-control-sm" type="text" placeholder="Observações" name="obs4">
       </fieldset>
       <br>
 
       <fieldset>
-        <legend><small>6. BL e DRE</small></legend><br>
+        <legend><small>5. Balancete comparativo</small></legend><br>
         <div class="form-check form-check-inline">
           <input class="form-check-input" name="trabalho5[]" type="checkbox" id="inlineCheckbox1" value="Controle interno"  >
           <label class="form-check-label" for="inlineCheckbox1">Controle interno</label>
@@ -248,17 +237,16 @@
           <label class="form-check-label" for="inlineCheckbox3">Final</label>
         </div>
         <div class="form-check form-check-inline">
-          <input class="form-check-input" name="trabalho5[]" type="checkbox" id="inlineCheckbox3" value="Nenhum">
+          <input class="form-check-input" name="trabalho5[]" type="checkbox" id="inlineCheckbox4" value="Nenhum">
           <label class="form-check-label" for="inlineCheckbox3">Nenhum</label>
         </div>
         <br><br>
-        <input class="form-control form-control-sm" type="text" placeholder="Observações">
+        <input class="form-control form-control-sm" type="text" placeholder="Observações" name="obs5">
       </fieldset>
-
       <br>
-      value="Controle interno"
+
       <fieldset>
-        <legend><small>7. Questionário de T.I</small></legend><br>
+        <legend><small>6. BL e DRE</small></legend><br>
         <div class="form-check form-check-inline">
           <input class="form-check-input" name="trabalho6[]" type="checkbox" id="inlineCheckbox1" value="Controle interno"  >
           <label class="form-check-label" for="inlineCheckbox1">Controle interno</label>
@@ -272,18 +260,17 @@
           <label class="form-check-label" for="inlineCheckbox3">Final</label>
         </div>
         <div class="form-check form-check-inline">
-          <input class="form-check-input" name="trabalho6[]" type="checkbox" id="inlineCheckbox3" value="Nenhum">
-          <label class="form-check-label" for="inlineCheckbox3">Nenhum</label>
+          <input class="form-check-input" name="trabalho6[]" type="checkbox" id="inlineCheckbox4" value="Nenhum">
+          <label class="form-check-label" for="inlineCheckbox4">Nenhum</label>
         </div>
         <br><br>
-        <input class="form-control form-control-sm" type="text" placeholder="Observações">
+        <input class="form-control form-control-sm" type="text" placeholder="Observações" name="obs6">
       </fieldset>
-      <br>
 
+      <br>
+      value="Controle interno"
       <fieldset>
-        <legend><small>8. Contas a receber (aging-list, AVP, segregação entre circulante e não circulante e
-            PCLD)</small>
-        </legend><br>
+        <legend><small>7. Questionário de T.I</small></legend><br>
         <div class="form-check form-check-inline">
           <input class="form-check-input" name="trabalho7[]" type="checkbox" id="inlineCheckbox1" value="Controle interno"  >
           <label class="form-check-label" for="inlineCheckbox1">Controle interno</label>
@@ -301,12 +288,14 @@
           <label class="form-check-label" for="inlineCheckbox3">Nenhum</label>
         </div>
         <br><br>
-        <input class="form-control form-control-sm" type="text" placeholder="Observações">
+        <input class="form-control form-control-sm" type="text" placeholder="Observações" name="obs7">
       </fieldset>
       <br>
 
       <fieldset>
-        <legend><small>9. Registro de inventário</small></legend><br>
+        <legend><small>8. Contas a receber (aging-list, AVP, segregação entre circulante e não circulante e
+            PCLD)</small>
+        </legend><br>
         <div class="form-check form-check-inline">
           <input class="form-check-input" name="trabalho8[]" type="checkbox" id="inlineCheckbox1" value="Controle interno"  >
           <label class="form-check-label" for="inlineCheckbox1">Controle interno</label>
@@ -324,12 +313,20 @@
           <label class="form-check-label" for="inlineCheckbox3">Nenhum</label>
         </div>
         <br><br>
-        <input class="form-control form-control-sm" type="text" placeholder="Observações">
+        <input class="form-control form-control-sm" type="text" placeholder="Observações" name="obs8">
       </fieldset>
       <br>
 
       <fieldset>
-        <legend><small>9.1 Teste de realização de estoque</small></legend><br>
+        <legend><small>9. Registro de inventário</small></legend><br>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" name="trabalho9[]" type="checkbox" id="inlineCheckbox1" value="Controle interno"  >
+          <label class="form-check-label" for="inlineCheckbox1">Controle interno</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" name="trabalho9[]" type="checkbox" id="inlineCheckbox2" value="Preliminar">
+          <label class="form-check-label" for="inlineCheckbox2">Preliminar</label>
+        </div>
         <div class="form-check form-check-inline">
           <input class="form-check-input" name="trabalho9[]" type="checkbox" id="inlineCheckbox3" value="Final">
           <label class="form-check-label" for="inlineCheckbox3">Final</label>
@@ -339,21 +336,12 @@
           <label class="form-check-label" for="inlineCheckbox3">Nenhum</label>
         </div>
         <br><br>
-        <input class="form-control form-control-sm" type="text" placeholder="Observações">
+        <input class="form-control form-control-sm" type="text" placeholder="Observações" name="obs9">
       </fieldset>
       <br>
 
       <fieldset>
-        <legend><small>10. Adiantamento a fornecedores(aging-list, AVP, segregação entre circulante e não
-            circulante)</small></legend><br>
-        <div class="form-check form-check-inline">
-          <input class="form-check-input" name="trabalho10[]" type="checkbox" id="inlineCheckbox1" value="Controle interno"  >
-          <label class="form-check-label" for="inlineCheckbox1">Controle interno</label>
-        </div>
-        <div class="form-check form-check-inline">
-          <input class="form-check-input" name="trabalho10[]" type="checkbox" id="inlineCheckbox2" value="Preliminar">
-          <label class="form-check-label" for="inlineCheckbox2">Preliminar</label>
-        </div>
+        <legend><small>9.1 Teste de realização de estoque</small></legend><br>
         <div class="form-check form-check-inline">
           <input class="form-check-input" name="trabalho10[]" type="checkbox" id="inlineCheckbox3" value="Final">
           <label class="form-check-label" for="inlineCheckbox3">Final</label>
@@ -363,12 +351,13 @@
           <label class="form-check-label" for="inlineCheckbox3">Nenhum</label>
         </div>
         <br><br>
-        <input class="form-control form-control-sm" type="text" placeholder="Observações">
+        <input class="form-control form-control-sm" type="text" placeholder="Observações" name="obs10">
       </fieldset>
       <br>
 
       <fieldset>
-        <legend><small>11. Mapa de movimentação do imobilizado</small></legend><br>
+        <legend><small>10. Adiantamento a fornecedores(aging-list, AVP, segregação entre circulante e não
+            circulante)</small></legend><br>
         <div class="form-check form-check-inline">
           <input class="form-check-input" name="trabalho11[]" type="checkbox" id="inlineCheckbox1" value="Controle interno"  >
           <label class="form-check-label" for="inlineCheckbox1">Controle interno</label>
@@ -386,12 +375,12 @@
           <label class="form-check-label" for="inlineCheckbox3">Nenhum</label>
         </div>
         <br><br>
-        <input class="form-control form-control-sm" type="text" placeholder="Observações">
+        <input class="form-control form-control-sm" type="text" placeholder="Observações" name="obs11">
       </fieldset>
       <br>
 
       <fieldset>
-        <legend><small>11.1 Seleção do teste de adição e baixa do imobilizado</small></legend><br>
+        <legend><small>11. Mapa de movimentação do imobilizado</small></legend><br>
         <div class="form-check form-check-inline">
           <input class="form-check-input" name="trabalho12[]" type="checkbox" id="inlineCheckbox1" value="Controle interno"  >
           <label class="form-check-label" for="inlineCheckbox1">Controle interno</label>
@@ -409,13 +398,12 @@
           <label class="form-check-label" for="inlineCheckbox3">Nenhum</label>
         </div>
         <br><br>
-        <input class="form-control form-control-sm" type="text" placeholder="Observações">
+        <input class="form-control form-control-sm" type="text" placeholder="Observações" name="obs12">
       </fieldset>
       <br>
 
       <fieldset>
-        <legend><small>11.2 Verificar os documentos da seleção do teste de adição e baixa de imobilizado</small>
-        </legend><br>
+        <legend><small>11.1 Seleção do teste de adição e baixa do imobilizado</small></legend><br>
         <div class="form-check form-check-inline">
           <input class="form-check-input" name="trabalho13[]" type="checkbox" id="inlineCheckbox1" value="Controle interno"  >
           <label class="form-check-label" for="inlineCheckbox1">Controle interno</label>
@@ -433,12 +421,13 @@
           <label class="form-check-label" for="inlineCheckbox3">Nenhum</label>
         </div>
         <br><br>
-        <input class="form-control form-control-sm" type="text" placeholder="Observações">
+        <input class="form-control form-control-sm" type="text" placeholder="Observações" name="obs13">
       </fieldset>
       <br>
 
       <fieldset>
-        <legend><small>11.3 Teste de depreciação</small></legend><br>
+        <legend><small>11.2 Verificar os documentos da seleção do teste de adição e baixa de imobilizado</small>
+        </legend><br>
         <div class="form-check form-check-inline">
           <input class="form-check-input" name="trabalho14[]" type="checkbox" id="inlineCheckbox1" value="Controle interno"  >
           <label class="form-check-label" for="inlineCheckbox1">Controle interno</label>
@@ -456,14 +445,12 @@
           <label class="form-check-label" for="inlineCheckbox3">Nenhum</label>
         </div>
         <br><br>
-        <input class="form-control form-control-sm" type="text" placeholder="Observações">
+        <input class="form-control form-control-sm" type="text" placeholder="Observações" name="obs14">
       </fieldset>
       <br>
 
       <fieldset>
-        <legend><small>12. Fornecedores ( aging-list, AVP, segregação entre circulante e não circulante)</small>
-        </legend>
-        <br>
+        <legend><small>11.3 Teste de depreciação</small></legend><br>
         <div class="form-check form-check-inline">
           <input class="form-check-input" name="trabalho15[]" type="checkbox" id="inlineCheckbox1" value="Controle interno"  >
           <label class="form-check-label" for="inlineCheckbox1">Controle interno</label>
@@ -481,14 +468,14 @@
           <label class="form-check-label" for="inlineCheckbox3">Nenhum</label>
         </div>
         <br><br>
-        <input class="form-control form-control-sm" type="text" placeholder="Observações">
+        <input class="form-control form-control-sm" type="text" placeholder="Observações" name="obs15">
       </fieldset>
       <br>
 
       <fieldset>
-        <legend><small>13. Adiantamento de clientes (aging-list, AVP, segregação entre circulante e não
-            circulante)</small>
-        </legend><br>
+        <legend><small>12. Fornecedores ( aging-list, AVP, segregação entre circulante e não circulante)</small>
+        </legend>
+        <br>
         <div class="form-check form-check-inline">
           <input class="form-check-input" name="trabalho16[]" type="checkbox" id="inlineCheckbox1" value="Controle interno"  >
           <label class="form-check-label" for="inlineCheckbox1">Controle interno</label>
@@ -506,12 +493,14 @@
           <label class="form-check-label" for="inlineCheckbox3">Nenhum</label>
         </div>
         <br><br>
-        <input class="form-control form-control-sm" type="text" placeholder="Observações">
+        <input class="form-control form-control-sm" type="text" placeholder="Observações" name="obs16">
       </fieldset>
       <br>
 
       <fieldset>
-        <legend><small>14. Comparativo Receita de vendas X SPED fiscal</small></legend><br>
+        <legend><small>13. Adiantamento de clientes (aging-list, AVP, segregação entre circulante e não
+            circulante)</small>
+        </legend><br>
         <div class="form-check form-check-inline">
           <input class="form-check-input" name="trabalho17[]" type="checkbox" id="inlineCheckbox1" value="Controle interno"  >
           <label class="form-check-label" for="inlineCheckbox1">Controle interno</label>
@@ -529,12 +518,12 @@
           <label class="form-check-label" for="inlineCheckbox3">Nenhum</label>
         </div>
         <br><br>
-        <input class="form-control form-control-sm" type="text" placeholder="Observações">
+        <input class="form-control form-control-sm" type="text" placeholder="Observações" name="obs17">
       </fieldset>
       <br>
 
       <fieldset>
-        <legend><small>15. Comparativo de despesa de ICMS X SPED fiscal</small></legend><br>
+        <legend><small>14. Comparativo Receita de vendas X SPED fiscal</small></legend><br>
         <div class="form-check form-check-inline">
           <input class="form-check-input" name="trabalho18[]" type="checkbox" id="inlineCheckbox1" value="Controle interno"  >
           <label class="form-check-label" for="inlineCheckbox1">Controle interno</label>
@@ -552,12 +541,12 @@
           <label class="form-check-label" for="inlineCheckbox3">Nenhum</label>
         </div>
         <br><br>
-        <input class="form-control form-control-sm" type="text" placeholder="Observações">
+        <input class="form-control form-control-sm" type="text" placeholder="Observações" name="obs18">
       </fieldset>
       <br>
 
       <fieldset>
-        <legend><small>16. Comparativo de despesa de PIS e COFINS X Recibo dos Speds contribuições</small></legend><br>
+        <legend><small>15. Comparativo de despesa de ICMS X SPED fiscal</small></legend><br>
         <div class="form-check form-check-inline">
           <input class="form-check-input" name="trabalho19[]" type="checkbox" id="inlineCheckbox1" value="Controle interno"  >
           <label class="form-check-label" for="inlineCheckbox1">Controle interno</label>
@@ -575,12 +564,12 @@
           <label class="form-check-label" for="inlineCheckbox3">Nenhum</label>
         </div>
         <br><br>
-        <input class="form-control form-control-sm" type="text" placeholder="Observações">
+        <input class="form-control form-control-sm" type="text" placeholder="Observações" name="obs19">
       </fieldset>
       <br>
 
       <fieldset>
-        <legend><small>17. Comparativo Receita de serviço X Livro de prestação de serviços</small></legend><br>
+        <legend><small>16. Comparativo de despesa de PIS e COFINS X Recibo dos Speds contribuições</small></legend><br>
         <div class="form-check form-check-inline">
           <input class="form-check-input" name="trabalho20[]" type="checkbox" id="inlineCheckbox1" value="Controle interno"  >
           <label class="form-check-label" for="inlineCheckbox1">Controle interno</label>
@@ -598,12 +587,12 @@
           <label class="form-check-label" for="inlineCheckbox3">Nenhum</label>
         </div>
         <br><br>
-        <input class="form-control form-control-sm" type="text" placeholder="Observações">
+        <input class="form-control form-control-sm" type="text" placeholder="Observações"name="obs20">
       </fieldset>
       <br>
 
       <fieldset>
-        <legend><small>18. Comparativo de despesa de ISS X Livro de prestação de serviços</small></legend><br>
+        <legend><small>17. Comparativo Receita de serviço X Livro de prestação de serviços</small></legend><br>
         <div class="form-check form-check-inline">
           <input class="form-check-input" name="trabalho21[]" type="checkbox" id="inlineCheckbox1" value="Controle interno"  >
           <label class="form-check-label" for="inlineCheckbox1">Controle interno</label>
@@ -621,12 +610,12 @@
           <label class="form-check-label" for="inlineCheckbox3">Nenhum</label>
         </div>
         <br><br>
-        <input class="form-control form-control-sm" type="text" placeholder="Observações">
+        <input class="form-control form-control-sm" type="text" placeholder="Observações"name="obs21">
       </fieldset>
       <br>
 
       <fieldset>
-        <legend><small>19. Revisão analítica do resultado/gráfico por área</small></legend><br>
+        <legend><small>18. Comparativo de despesa de ISS X Livro de prestação de serviços</small></legend><br>
         <div class="form-check form-check-inline">
           <input class="form-check-input" name="trabalho22[]" type="checkbox" id="inlineCheckbox1" value="Controle interno"  >
           <label class="form-check-label" for="inlineCheckbox1">Controle interno</label>
@@ -644,14 +633,12 @@
           <label class="form-check-label" for="inlineCheckbox3">Nenhum</label>
         </div>
         <br><br>
-        <input class="form-control form-control-sm" type="text" placeholder="Observações">
+        <input class="form-control form-control-sm" type="text" placeholder="Observações" name="obs22">
       </fieldset>
       <br>
 
       <fieldset>
-        <legend><small>20. Receita bruta - Fazer checagem individual entre os lançamentos da notas fiscais no razão
-            contábil com os speds (Só é possível realizar a checagem se o razão do cliente possuir a informação do
-            número da nota fiscal e for tabulado corretamente para extrair a informação).</small></legend><br>
+        <legend><small>19. Revisão analítica do resultado/gráfico por área</small></legend><br>
         <div class="form-check form-check-inline">
           <input class="form-check-input" name="trabalho23[]" type="checkbox" id="inlineCheckbox1" value="Controle interno"  >
           <label class="form-check-label" for="inlineCheckbox1">Controle interno</label>
@@ -669,19 +656,14 @@
           <label class="form-check-label" for="inlineCheckbox3">Nenhum</label>
         </div>
         <br><br>
-        <input class="form-control form-control-sm" type="text" placeholder="Observações">
+        <input class="form-control form-control-sm" type="text" placeholder="Observações" name="obs23">
       </fieldset>
       <br>
 
-
-
-
-      <legend><small><u><strong>Para os itens abaixo, informar se algum grupo não será validado através do teste de
-              voucher:</strong></u></small></legend><br><br>
-
       <fieldset>
-        <legend><small>21. Seleção do teste das Receita Líquida das Atividades Operacionais - selecionar com base nos
-            speds ou nos razões?</small></legend><br>
+        <legend><small>20. Receita bruta - Fazer checagem individual entre os lançamentos da notas fiscais no razão
+            contábil com os speds (Só é possível realizar a checagem se o razão do cliente possuir a informação do
+            número da nota fiscal e for tabulado corretamente para extrair a informação).</small></legend><br>
         <div class="form-check form-check-inline">
           <input class="form-check-input" name="trabalho24[]" type="checkbox" id="inlineCheckbox1" value="Controle interno"  >
           <label class="form-check-label" for="inlineCheckbox1">Controle interno</label>
@@ -699,12 +681,19 @@
           <label class="form-check-label" for="inlineCheckbox3">Nenhum</label>
         </div>
         <br><br>
-        <input class="form-control form-control-sm" type="text" placeholder="Observações">
+        <input class="form-control form-control-sm" type="text" placeholder="Observações" name="obs24">
       </fieldset>
       <br>
 
+
+
+
+      <legend><small><u><strong>Para os itens abaixo, informar se algum grupo não será validado através do teste de
+              voucher:</strong></u></small></legend><br><br>
+
       <fieldset>
-        <legend><small>22. Seleção do teste de Custo das Atividades Operacionais.</small></legend><br>
+        <legend><small>21. Seleção do teste das Receita Líquida das Atividades Operacionais - selecionar com base nos
+            speds ou nos razões?</small></legend><br>
         <div class="form-check form-check-inline">
           <input class="form-check-input" name="trabalho25[]" type="checkbox" id="inlineCheckbox1" value="Controle interno"  >
           <label class="form-check-label" for="inlineCheckbox1">Controle interno</label>
@@ -722,12 +711,12 @@
           <label class="form-check-label" for="inlineCheckbox3">Nenhum</label>
         </div>
         <br><br>
-        <input class="form-control form-control-sm" type="text" placeholder="Observações">
+        <input class="form-control form-control-sm" type="text" placeholder="Observações" name="obs25">
       </fieldset>
       <br>
 
       <fieldset>
-        <legend><small>23. Seleção do teste das Despesas Comerciais.</small></legend><br>
+        <legend><small>22. Seleção do teste de Custo das Atividades Operacionais.</small></legend><br>
         <div class="form-check form-check-inline">
           <input class="form-check-input" name="trabalho26[]" type="checkbox" id="inlineCheckbox1" value="Controle interno"  >
           <label class="form-check-label" for="inlineCheckbox1">Controle interno</label>
@@ -745,12 +734,12 @@
           <label class="form-check-label" for="inlineCheckbox3">Nenhum</label>
         </div>
         <br><br>
-        <input class="form-control form-control-sm" type="text" placeholder="Observações">
+        <input class="form-control form-control-sm" type="text" placeholder="Observações" name="obs26">
       </fieldset>
       <br>
 
       <fieldset>
-        <legend><small>24. Seleção do teste das Despesas Gerais e Administrativas.</small></legend><br>
+        <legend><small>23. Seleção do teste das Despesas Comerciais.</small></legend><br>
         <div class="form-check form-check-inline">
           <input class="form-check-input" name="trabalho27[]" type="checkbox" id="inlineCheckbox1" value="Controle interno"  >
           <label class="form-check-label" for="inlineCheckbox1">Controle interno</label>
@@ -768,12 +757,12 @@
           <label class="form-check-label" for="inlineCheckbox3">Nenhum</label>
         </div>
         <br><br>
-        <input class="form-control form-control-sm" type="text" placeholder="Observações">
+        <input class="form-control form-control-sm" type="text" placeholder="Observações" name="obs27">
       </fieldset>
       <br>
 
       <fieldset>
-        <legend><small>25. Seleção do teste de Receitas e Despesas Financeiras.</small></legend><br>
+        <legend><small>24. Seleção do teste das Despesas Gerais e Administrativas.</small></legend><br>
         <div class="form-check form-check-inline">
           <input class="form-check-input" name="trabalho28[]" type="checkbox" id="inlineCheckbox1" value="Controle interno"  >
           <label class="form-check-label" for="inlineCheckbox1">Controle interno</label>
@@ -791,53 +780,76 @@
           <label class="form-check-label" for="inlineCheckbox3">Nenhum</label>
         </div>
         <br><br>
-        <input class="form-control form-control-sm" type="text" placeholder="Observações">
+        <input class="form-control form-control-sm" type="text" placeholder="Observações" name="obs28">
+      </fieldset>
+      <br>
+
+      <fieldset>
+        <legend><small>25. Seleção do teste de Receitas e Despesas Financeiras.</small></legend><br>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" name="trabalho29[]" type="checkbox" id="inlineCheckbox1" value="Controle interno"  >
+          <label class="form-check-label" for="inlineCheckbox1">Controle interno</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" name="trabalho29[]" type="checkbox" id="inlineCheckbox2" value="Preliminar">
+          <label class="form-check-label" for="inlineCheckbox2">Preliminar</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" name="trabalho29[]" type="checkbox" id="inlineCheckbox3" value="Final">
+          <label class="form-check-label" for="inlineCheckbox3">Final</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" name="trabalho29[]" type="checkbox" id="inlineCheckbox3" value="Nenhum">
+          <label class="form-check-label" for="inlineCheckbox3">Nenhum</label>
+        </div>
+        <br><br>
+        <input class="form-control form-control-sm" type="text" placeholder="Observações" name="obs29">
       </fieldset>
       <br>
 
       <fieldset>
         <legend><small>26. Verificar os documentos da seleção dos testes de despesas e receitas</small></legend><br>
         <div class="form-check form-check-inline">
-          <input class="form-check-input" name="trabalho29[]" type="checkbox" id="inlineCheckbox1" value="Controle interno"  >
+          <input class="form-check-input" name="trabalho30[]" type="checkbox" id="inlineCheckbox1" value="Controle interno"  >
           <label class="form-check-label" for="inlineCheckbox1">Controle interno</label>
         </div>
         <div class="form-check form-check-inline">
-          <input class="form-check-input" name="trabalho29[]" type="checkbox" id="inlineCheckbox2" value="Preliminar">
+          <input class="form-check-input" name="trabalho30[]" type="checkbox" id="inlineCheckbox2" value="Preliminar">
           <label class="form-check-label" for="inlineCheckbox2">Preliminar</label>
         </div>
         <div class="form-check form-check-inline">
-          <input class="form-check-input" name="trabalho29[]" type="checkbox" id="inlineCheckbox3" value="Final">
+          <input class="form-check-input" name="trabalho30[]" type="checkbox" id="inlineCheckbox3" value="Final">
           <label class="form-check-label" for="inlineCheckbox3">Final</label>
         </div>
         <div class="form-check form-check-inline">
-          <input class="form-check-input" name="trabalho29[]" type="checkbox" id="inlineCheckbox3" value="Nenhum">
+          <input class="form-check-input" name="trabalho30[]" type="checkbox" id="inlineCheckbox3" value="Nenhum">
           <label class="form-check-label" for="inlineCheckbox3">Nenhum</label>
         </div>
         <br><br>
-        <input class="form-control form-control-sm" type="text" placeholder="Observações">
+        <input class="form-control form-control-sm" type="text" placeholder="Observações" name="obs30">
       </fieldset>
       <br>
 
       <fieldset>
         <legend><small>27. Outro WP</small></legend><br>
         <div class="form-check form-check-inline">
-          <input class="form-check-input" name="trabalho29[]" type="checkbox" id="inlineCheckbox1" value="Controle interno"  >
+          <input class="form-check-input" name="trabalho31[]" type="checkbox" id="inlineCheckbox1" value="Controle interno"  >
           <label class="form-check-label" for="inlineCheckbox1">Controle interno</label>
         </div>
         <div class="form-check form-check-inline">
-          <input class="form-check-input" name="trabalho29[]" type="checkbox" id="inlineCheckbox2" value="Preliminar">
+          <input class="form-check-input" name="trabalho31[]" type="checkbox" id="inlineCheckbox2" value="Preliminar">
           <label class="form-check-label" for="inlineCheckbox2">Preliminar</label>
         </div>
         <div class="form-check form-check-inline">
-          <input class="form-check-input" name="trabalho29[]" type="checkbox" id="inlineCheckbox3" value="Final">
+          <input class="form-check-input" name="trabalho31[]" type="checkbox" id="inlineCheckbox3" value="Final">
           <label class="form-check-label" for="inlineCheckbox3">Final</label>
         </div>
         <div class="form-check form-check-inline">
-          <input class="form-check-input" name="trabalho29[]" type="checkbox" id="inlineCheckbox3" value="Nenhum">
+          <input class="form-check-input" name="trabalho31[]" type="checkbox" id="inlineCheckbox3" value="Nenhum">
           <label class="form-check-label" for="inlineCheckbox3">Nenhum</label>
         </div>
         <br><br>
-        <input class="form-control form-control-sm" type="text" placeholder="Especificar">
+        <input class="form-control form-control-sm" type="text" placeholder="Especificar" name="obs31">
       </fieldset>
       <br>
 
@@ -853,5 +865,5 @@
     </form>
   </div>
 </body>
-<script src="assets/scripts/index.js"></script>
+
 </html>

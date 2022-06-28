@@ -1,5 +1,5 @@
 <?php include("conexao.php"); 
-$sqlQuery = "SELECT CodSolicitacao, nome, itemUm, itemDois, itemTres, itemQuatro, itemCinco FROM Solicitacao LIMIT 5";
+$sqlQuery = "SELECT CodSolicitacao, nome, itemUm, itemDois, itemTres, itemQuatro, itemCinco FROM Solicitacao WHERE nome = 'BRUNO PASCOAL DOS SANTOS'";
 $resultSet = mysqli_query($conexao, $sqlQuery) or die("database error:". mysqli_error($conexao));
 
 
@@ -30,7 +30,15 @@ $resultSet = mysqli_query($conexao, $sqlQuery) or die("database error:". mysqli_
     <title>Document</title>
 </head>
 <body>
-    <div class="box">
+    
+      <div class="box-search">
+        <input type="search" class="form-control w-2" placeholder="Pesquisar">
+        <button class="btn btn-primay">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+            </svg>
+        </button>
+      </div>
         <table id="editableTable" class="table table-bordered">
             <thead>
                 <tr>
@@ -41,14 +49,17 @@ $resultSet = mysqli_query($conexao, $sqlQuery) or die("database error:". mysqli_
             </thead>
             <tbody>
                 <?php while( $developer = mysqli_fetch_assoc($resultSet) ) { ?>
-                <tr id="<?php echo $developer ['CodSolicitacao']; ?>">
-                <td><?php echo $developer ['CodSolicitacao']; ?></td>
-                <td><?php echo $developer ['nome']; ?></td>
-            		   				   				  
+                  <tr scope="row" id="<?php echo $developer ['CodSolicitacao']; ?>">
+                  <td>1. Abrir CW</td>
+                  <td><?php echo $developer ['nome']; ?></td>
+                  
+                 
+                                        
                 </tr>
+              
                 <?php } ?>
             </tbody>
-    </div>
+   
 </table>
 </body>
 </html>

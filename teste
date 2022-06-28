@@ -1,35 +1,64 @@
 CREATE TABLE Solicitacao
 (
-    CodSolicitacao integer PRIMARY KEY AUTOINCREMENT varchar(255),
-    Nome varchar(255),
-   
-    itemUm varchar(255),
-    itemDois varchar(255),
-    itemTrez varchar(255),
-    itemQuatro varchar(255),
-    itemCinco varchar(255),
-    itemSeis varchar(255),
-    itemSete varchar(255),
-    itemOito varchar(255),
-    itemNove varchar(255),
-    itemDez varchar(255),
-    itemOnze varchar(255),
-    itemDoze varchar(255),
-    itemTreze varchar(255),
-    itemQuatorze varchar(255),
-    itemQuinz varchar(255),
-    itemDezesseis varchar(255),
-    itemDezessete varchar(255),
-    itemDezoito varchar(255),
-    itemDezenove varchar(255),
-    itemVinte varchar(255),
-    itemVinteUm varchar(255),
-    itemVinteDois varchar(255),
-    itemVinteTres varchar(255),
-    itemVinteQuatro varchar(255),
-    itemVinteCinco varchar(255),
-    itemVinteSeis varchar(255),
-    itemVinteSete varchar(255),
-    itemVinteOito varchar(255),
-    itemVinteNove varchar(255)
+    CodSolicitacao integer PRIMARY KEY AUTOINCREMENT varchar(6),
+    nomeSolicitante varchar(30),
+    nomeCliente varchar(30),
+    grupoEmpresa varchar(50),
+    itemUm varchar(30),
+    obsItemUm varchar(100),
+    itemDois varchar(30),
+    obsItemUm
+    itemTrez varchar(30),
+    obsItemUm
+    itemQuatro varchar(30),
+    obsItemUm
+    itemCinco varchar(30),
+    obsItemUm
+    itemSeis varchar(30),
+    obsItemUm
+    itemSete varchar(30),
+    obsItemUm
+    itemOito varchar(30),
+    obsItemUm
+    itemNove varchar(30),
+    obsItemUm
+    itemDez varchar(30),
+    obsItemUm
+    itemOnze varchar(30),
+    obsItemUm
+    itemDoze varchar(30),
+    obsItemUm
+    itemTreze varchar(30),
+    obsItemUm
+    itemQuatorze varchar(30),
+    obsItemUm
+    itemQuinz varchar(30),
+    obsItemUm
+    itemDezesseis varchar(30),
+    obsItemUm
+    itemDezessete varchar(30),
+    obsItemUm
+    itemDezoito varchar(30),
+    obsItemUm
+    itemDezenove varchar(30),
+    obsItemUm
+    itemVinte varchar(30),
+    obsItemUm
+    itemVinteUm varchar(30),
+    obsItemUm
+    itemVinteDois varchar(30),
+    obsItemUm
+    itemVinteTres varchar(30),
+    obsItemUm
+    itemVinteQuatro varchar(30),
+    obsItemUm
+    itemVinteCinco varchar(30),
+    obsItemUm
+    itemVinteSeis varchar(30),
+    obsItemUm
+    itemVinteSete varchar(30),
+    obsItemUm
+    itemVinteOito varchar(30),
+    obsItemUm
+    itemVinteNove varchar(30)
 );

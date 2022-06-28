@@ -43,3 +43,9 @@ body {
   font-family: Arial;
   background-color: rgba(156, 185, 240, 0.616);
 }
+
+.box-search{
+  display: flex;
+  justify-content: center;
+  gap: .1%;
+}

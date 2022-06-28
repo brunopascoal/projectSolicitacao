@@ -1,15 +1,5 @@
-const box = document.getElementById('box');
-
-  
-function handleRadioClick() {
-  if (document.getElementById('hide').checked) {
-    box.style.display = 'block';
-  } else {
-    box.style.display = 'none';
-  }
+function text(x) {
+  if (x == 0) document.getElementById("group").style.display = "flex";
+  else document.getElementById("group").style.display = "none";
+  return;
 }
-
-const radioButtons = document.querySelectorAll('input[name="example"]');
-radioButtons.forEach(radio => {
-  radio.addEventListener('click', handleRadioClick);
-});
